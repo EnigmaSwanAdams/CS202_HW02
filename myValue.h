@@ -14,8 +14,8 @@
 using std::cout;
 using std::endl;
 
-#ifndef Value_H_
-#define Value_H_
+#ifndef myValue_H_
+#define myValue_H_
 // class declaration goes here
 class Value
 {
@@ -33,4 +33,4 @@ private:
 	
 };
 
-#endif /* VECTOR3F_H_ */
+#endif /* myValue_H_ */

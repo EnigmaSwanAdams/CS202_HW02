@@ -11,7 +11,7 @@
 
 
 
-#include "Value.h"
+#include "myValue.h"
 
 // constructors
 // defualt contructor

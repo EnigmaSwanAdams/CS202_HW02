@@ -18,7 +18,7 @@
 #include <list>
 #include <iostream>
 #include "catch.hpp"
-#include "Value.h"
+#include "myValue.h"
 using std::cout;
 using std::endl;
 

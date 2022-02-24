@@ -4,6 +4,8 @@
 * Additional Program 2:
 * file containing main,
 *
+* go cave exploring in the nondescript cave
+* 
 */
 #include <iostream>
 #include "Room.h"
@@ -57,10 +59,38 @@ int main() {
 	char direction;
 
 	while (true) {
+		// let them know where they're at
 		(*currentPtr).properPrint();
-		(*currentPtr)._visited = true;
+		(*currentPtr)._visited = true; // now we've been here 
+
+		// if we got out
 		if (currentPtr == &exit) { cout << "\nYou've made it!" << endl; break; }
-		cout << "\nwhich direction will you go. \nEnter R, L or B to move right left or back repectively: ";
+
+		cout << "\n\nwhich direction will you go?" << endl;
+
+		//let them know there options 
+		if ((*currentPtr)._nextRPtr != NULL) { 
+			cout << "To your right: ";
+			Room* tempNextPtr = (*currentPtr)._nextRPtr;
+			(*tempNextPtr).printShort();
+			cout << endl;
+		}
+		if ((*currentPtr)._nextLPtr != NULL) {
+			cout << "To your left: ";
+			Room* tempNextPtr = (*currentPtr)._nextLPtr;
+			(*tempNextPtr).printShort();
+			cout << endl;
+		}
+		if ((*currentPtr)._backPtr != NULL) {
+			cout << "Behind you: ";
+			Room* tempNextPtr = (*currentPtr)._backPtr;
+			(*tempNextPtr).printShort();
+			cout << endl;
+		}
+		
+		
+		cout << "\nEnter R, L or B to move right left or back repectively: ";
+		
 		cin >> direction;
 		direction = toupper(direction);
 

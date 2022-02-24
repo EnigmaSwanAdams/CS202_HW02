@@ -33,10 +33,12 @@ int main() {
 	if (&y1 < &y2) { cout << "As more spaces are alocated on the stack the the adress numbers go up" << endl; }
 
 	// which order does free store go?
+	// the other two are consistent, but sometimes the this are alocated at lower adresses
+	// and sometimes at hihger adresses on the heap
 	auto ptrZ1 = new int;
 	auto ptrZ2 = new int;
-	if (ptrZ1 > ptrZ2) { cout << "As more spaces are alocated on the heap the adress numbers go down" << endl; }
-	if (ptrZ1 < ptrZ2) { cout << "As more spaces are alocated on the heap the adress numbers go up" << endl; }
+	if (ptrZ1 > ptrZ2) { cout << "This time the adresses alocated on the heap went down" << endl; }
+	if (ptrZ1 < ptrZ2) { cout << "This time the adresses alocated on the heap went up" << endl; }
 
 	// interesting test / expieriment
 	int* Xptr = &x1;

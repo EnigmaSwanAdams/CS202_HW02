@@ -13,7 +13,7 @@
 #ifndef ROOM_H_
 #define ROOM_H_
 
-#include <string>;
+#include <string>
 using std::string;
 // class declaration goes here
 class Room
@@ -21,12 +21,15 @@ class Room
 public:
 	//constructor
 	Room(string longDescript, string shortDescript, 
-		Room* nextRPtr, Room* nextLPtr, Room* backPtr);
+		Room* nextRPtr, Room* nextLPtr, Room* backPtr, bool visited);
+	// copy constructor
+	Room(const Room& orig);
 
 	//member functions
 	// printing descriptions
 	void printLong(); // prints name, days since watered and pot size
 	void printShort();
+	void properPrint();
 
 	// operator overloads
 	//bool operator==(const Room& b);
@@ -40,6 +43,7 @@ public:
 	Room* _nextRPtr = NULL;
 	Room* _nextLPtr = NULL;
 	Room* _backPtr = NULL;
+	bool _visited = 0;
 
 };
 

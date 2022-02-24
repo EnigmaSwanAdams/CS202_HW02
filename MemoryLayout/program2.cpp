@@ -6,6 +6,7 @@
 *more specific file info:
 *file containing main,
 *
+* tests whethor adresses go up or down 
 * 
 */
 
@@ -40,16 +41,20 @@ int main() {
 	if (ptrZ1 > ptrZ2) { cout << "This time the adresses alocated on the heap went down" << endl; }
 	if (ptrZ1 < ptrZ2) { cout << "This time the adresses alocated on the heap went up" << endl; }
 
-	// interesting test / expieriment
-	int* Xptr = &x1;
-	int* Yptr = &y1;
-
-	printPointer(x1);
-	printPointer(y1);
-	if (Xptr == Yptr) { cout << "EQUAL?"; } // this doesn't get triggered
-	// yet the print shows the saem hex number
-	// something to do with the differnt types of memory maybe being given there own relative adresses
-	// amd thats whats being printed
+	// interesting test / experiment
+	cout << "printing the adresses of all the previously declared variables..." << endl;
+	vector<int*> vec{ &x1, &y1, ptrZ1, &x2, &y2, ptrZ2 };
+	for(auto i: vec){
+		///printPointer(*i); // test
+	}
+	// via this test I have discovered the this printPointer function doesn't work since
+	// it is passed an integer by value, so the pointer it prints will alaways be the one 
+	// pointing to that functions copy of the integer
+	 
+	// here I actually print the pointer values
+	cout << "\nStatic storage address example: " << vec.at(0);
+	cout << "\nStack storage address example: " << vec.at(1);
+	cout << "\nFree Store address example: " << vec.at(2);
 	return 0;
 }
 

@@ -27,7 +27,8 @@ using std::endl;
 class myValue
 {
 public:
-
+	// defualt contructor
+	myValue();
 	// Copy constructor
 	myValue(const myValue& orig);
 
@@ -37,20 +38,22 @@ public:
 	// partial version 
 	// Quick constructor partial
 	myValue(int daysSW, float potSize, string name);
+	// quick contructor name only
+	myValue(string name);
 
 
 	//member functions
-	// prints all plant info
-	void printValueBasic();
-	void printValueFindInnfo(); // what it looks like and where it is
+	// printing 
+	void printValueBasic(); // prints name, days since watered and pot size
+	void printValueFindInfo(); // what it looks like and where it is
 	void printDate(); // prints the date the plant was aquired
 
-	//unfinished 
-	//void changeVar();
-
 	// operator overloads
+	bool operator==(const myValue& b);
 
-private:
+	
+
+//private:
 	int _daysSW = -1;
 	float _potSize = -1;
 	string _name = "NOT NAMED"; // genus a species would be more usefull but I don't know those things off the top

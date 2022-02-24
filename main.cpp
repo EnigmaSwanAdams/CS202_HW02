@@ -86,30 +86,35 @@ TEST_CASE("Stack: pop", "[Stack::pop]") {
 	}
 }
 
-int main() {
-	//keep my list in sorted order
-	// I'm just going to initialize it in sorted order 
-	//in this case Alphabetically by the ascii character in there name (the numbers)
-	// to avoid writing a whole other sort algorithm 
-	myValue mV1 = myValue("Plant 1");
-	myValue mV2 = myValue("Plant 2");
-	myValue mV3 = myValue("Plant 3");
-	myValue mV2AndAHalf = myValue("Plant 2.5");
-	myValue mV4 = myValue("Plant 4");
-	myValue mV5 = myValue("Plant 5");
-	myValue plantToFind = mV3;
+TEST_CASE("Insert and find"){
+	GIVEN("An already ordered list of myValues") {
+		//keep my list in sorted order
+		// I'm just going to initialize it in sorted order 
+		//in this case Alphabetically by the ascii character in there name (the numbers)
+		// to avoid writing a whole other sort algorithm 
+		myValue mV1 = myValue("Plant 1");
+		myValue mV2 = myValue("Plant 2");
+		myValue mV3 = myValue("Plant 3");
+		myValue mV2AndAHalf = myValue("Plant 2.5");
+		myValue mV4 = myValue("Plant 4");
+		myValue mV5 = myValue("Plant 5");
+		myValue plantToFind = mV3;
+		list<myValue> L({ mV1, mV2, mV3, mV4, mV5 });
+		int sizeBeforInsert = L.size();
 
-	list<myValue> L({mV1, mV2, mV3, mV4, mV5});
 		// Search for a value in the list (a specific plant as designated by my == operator)
-	auto whereFound = find(L.begin(), L.end(), plantToFind);
+		auto whereFound = find(L.begin(), L.end(), plantToFind);
 		// insert a value with the iterator returned by the search 
-	L.insert(whereFound, mV2AndAHalf);
+		L.insert(whereFound, mV2AndAHalf);
+		
+		REQUIRE(L.size() == (sizeBeforInsert+1)); // test the size is right
+		// not sure what else to test here
+
+
 		// print out the list 
-	for (auto i: L) {
-		i.printValueBasic();
-		cout << endl;
+		for (auto i : L) {
+			i.printValueBasic();
+			cout << endl;
+		}
 	}
-
-
-	return 0;
 }

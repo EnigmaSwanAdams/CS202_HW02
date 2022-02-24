@@ -15,6 +15,7 @@ using std::cin;
 using std::endl;
 
 
+
 int main() {
 	// create rooms 
 	Room exit = Room("exit long descript", "exit short descript", NULL, NULL, NULL, 0);
@@ -151,14 +152,13 @@ int main() {
 			currentPtr = (*currentPtr)._backPtr;
 			break;
 
-		defualt:
+		default:
 			cout << "Thats not a recognised command/direction" << endl;
 			cout << "Pick a different way\n" << endl;
-			break;
 		}
 	}
 
-
+	
 		/*
 		if (direction == 'R') {
 			if(current._nextRPtr == NULL){ 

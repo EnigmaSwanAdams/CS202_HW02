@@ -21,8 +21,8 @@ using std::string;
 using std::cout;
 using std::endl;
 
-#ifndef myValue_H_
-#define myValue_H_
+#ifndef MYVALUE_H_
+#define MYVALUE_H_
 // class declaration goes here
 class myValue
 {
@@ -67,4 +67,4 @@ public:
 	
 };
 
-#endif /* myValue_H_ */
+#endif /* MYVALUE_H_ */

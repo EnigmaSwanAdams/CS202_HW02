@@ -7,7 +7,7 @@
 *file containing main,
 *
 * tests whethor adresses go up or down 
-* 
+* for various places in memory
 */
 
 

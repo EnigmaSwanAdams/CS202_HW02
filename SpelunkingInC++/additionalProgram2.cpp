@@ -56,7 +56,7 @@ int main() {
 	Room* currentPtr = &entrance; // currentPtr points to entrance
 	char direction;
 	char show;
-	bool wantsLongerDescript = 0;
+	
 
 	// traverse the cave
 	while (true) {
@@ -73,6 +73,7 @@ int main() {
 
 		// let them know there options
 		cin >> show;
+		bool wantsLongerDescript = 0;
 		if (toupper(show) == 'S') { wantsLongerDescript = true; }
 		(*currentPtr).printOptions(wantsLongerDescript);
 
@@ -125,46 +126,6 @@ int main() {
 		}
 	}
 
-	
-		/*
-		if (direction == 'R') {
-			if(current._nextRPtr == NULL){ 
-				// tell them they can't go that way, and go back to the top of the list
-				cout << "Dead end" << endl;
-				cout << "Pick a different way" << endl;
-				break;
-			}
-			current = *current._nextRPtr;
-			current.printLong(); // just do the long one for now
-		}
-		else if (direction == 'L') {
-			if (current._nextLPtr == NULL) {
-				// tell them they can't go that way, and go back to the top of the list
-				cout << "Dead end" << endl;
-				cout << "Pick a different way" << endl;
-				break;
-			}
-			current = *current._nextLPtr;
-			current.printLong(); // just do the long one for now
-		}
-		else if (direction == 'B') {
-			if (current._backPtr == NULL) {
-				// tell them they can't go that way, and go back to the top of the list
-				cout << "Dead end" << endl;
-				cout << "Pick a different way" << endl;
-				break;
-			}
-			current = *current._backPtr;
-			current.printLong(); // just do the long one for now
-		}
-		else {
-			cout << "Thats not a recognised command/direction" << endl;
-			cout << "Pick a different way" << endl;
-			break;
-		}
-	}
-	*/
 	return 0;
 }
-
 

@@ -18,7 +18,6 @@ using std::cout;
 using std::endl;
 using std::string;
 
-void printPointer(int i);
 
 int main() {
 	// which order does static storage go?
@@ -38,8 +37,8 @@ int main() {
 	// and sometimes at hihger adresses on the heap
 	auto ptrZ1 = new int;
 	auto ptrZ2 = new int;
-	if (ptrZ1 > ptrZ2) { cout << "This time the adresses alocated on the heap went down" << endl; }
-	if (ptrZ1 < ptrZ2) { cout << "This time the adresses alocated on the heap went up" << endl; }
+	if (ptrZ1 > ptrZ2) { cout << "This time the addresses alocated on the heap went down" << endl; }
+	if (ptrZ1 < ptrZ2) { cout << "This time the addresses alocated on the heap went up" << endl; }
 
 	// interesting test / experiment
 	cout << "printing the adresses of all the previously declared variables..." << endl;
@@ -47,7 +46,8 @@ int main() {
 	for(auto i: vec){
 		///printPointer(*i); // test
 	}
-	// via this test I have discovered the this printPointer function doesn't work since
+	// via this test I have discovered the this printPointer function given in
+	// the homework handout doesn't work since
 	// it is passed an integer by value, so the pointer it prints will alaways be the one 
 	// pointing to that functions copy of the integer
 	 
@@ -56,11 +56,4 @@ int main() {
 	cout << "\nStack storage address example: " << vec.at(1);
 	cout << "\nFree Store address example: " << vec.at(2);
 	return 0;
-}
-
-void printPointer(int i) {
-	int* iptr = &i;
-	// the unary * operator dereferences the pointer
-	cout << "i = " << *iptr << "\n";
-	cout << "& i = " << iptr << "\n";
 }

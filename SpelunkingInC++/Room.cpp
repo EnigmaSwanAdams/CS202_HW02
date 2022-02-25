@@ -12,6 +12,7 @@
 #include "room.h" 
 #include <iostream>
 using std::cout;
+using std::endl;
 
 //constructor
 Room::Room(string longDescript, string shortDescript,
@@ -29,4 +30,44 @@ void Room::printShort() { cout << _shortDescript; }
 void Room::properPrint() { 
 	if (_visited) { cout << _shortDescript; } // print short description if they've been there before
 	else { cout << _longDescript; } // print long descirption if they've never been there
+}
+void Room::printOptions(bool longerOne) {
+	//let them know there options 
+		// right
+	if (_nextRPtr != NULL) {
+		if (longerOne) {
+			cout << "You look closely at the room on your right" << endl;
+			(*_nextRPtr).printLong();
+		}
+		else {
+			cout << "To your right: ";
+			(*_nextRPtr).printShort();
+		}
+		cout << endl;
+	}
+	
+		//left
+	if (_nextLPtr != NULL) {
+		if (longerOne) {
+			cout << "You look closely at the room on your left" << endl;
+			(*_nextLPtr).printLong();
+		}
+		else {
+			cout << "To your left: ";
+			(*_nextLPtr).printShort();
+		}
+		cout << endl;
+	}
+
+	if (_backPtr != NULL) {
+		if (longerOne) {
+			cout << "You look closely at the room behind you" << endl;
+			(*_backPtr).printLong();
+		}
+		else {
+			cout << "behind you: ";
+			(*_backPtr).printShort();
+		}
+		cout << endl;
+	}
 }

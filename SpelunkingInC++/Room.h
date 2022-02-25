@@ -30,9 +30,7 @@ public:
 	void printLong(); // prints name, days since watered and pot size
 	void printShort();
 	void properPrint();
-
-	// operator overloads
-	//bool operator==(const Room& b);
+	void printOptions(bool longerOne);
 
 
 

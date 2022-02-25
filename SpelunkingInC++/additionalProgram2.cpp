@@ -54,11 +54,11 @@ int main() {
 	// print intial premise
 	cout << "You wake up in the middle of a cave complex\n";
 	Room* currentPtr = &entrance; // currentPtr points to entrance
-	//Room current = *currentPtr; // hopefully current is the same as entrance, and not a copy (nevermind)
-	//cout << "adress of current: " << &current << " and " << currentPtr;
-	//cout << "adress of entrance: " << &entrance << endl;
 	char direction;
+	char show;
+	bool wantsLongerDescript = 0;
 
+	// traverse the cave
 	while (true) {
 		// let them know where they're at
 		(*currentPtr).properPrint();
@@ -67,57 +67,22 @@ int main() {
 		// if we got out
 		if (currentPtr == &exit) { cout << "\nYou've made it!" << endl; break; }
 
-		cout << "\n\nwhich direction will you go?" << endl;
-		
-		//let them know there options 
-		if ((*currentPtr)._nextRPtr != NULL) { 
-			cout << "To your right: ";
-			Room* tempNextPtr = (*currentPtr)._nextRPtr;
-			(*tempNextPtr).printShort();
+		cout << "\nYou look around" << endl;
+		cout << "Enter S if you'd like to see the full descripions of the rooms around you\n"
+			"or anything else to see the short descirptions: ";
 
-			//give them the option to see the full descript
-			cout << "\nWant to read the full description (y or n): ";
-			char ans;
-			cin >> ans;
-			if (toupper(ans) == 'Y') { 
-				cout << "You look a litle closer at the room on your right" << endl;
-				(*tempNextPtr).printLong(); 
-			}
-		}
-		if ((*currentPtr)._nextLPtr != NULL) {
-			cout << "To your left: ";
-			Room* tempNextPtr = (*currentPtr)._nextLPtr;
-			(*tempNextPtr).printShort();
+		// let them know there options
+		cin >> show;
+		if (toupper(show) == 'S') { wantsLongerDescript = true; }
+		(*currentPtr).printOptions(wantsLongerDescript);
 
-			//give them the option to see the full descript
-			cout << "\nWant to read the full description (y or n): ";
-			char ans;
-			cin >> ans;
-			if (toupper(ans) == 'Y') {
-				cout << "You look a litle closer at the room on your right" << endl;
-				(*tempNextPtr).printLong();
-			}
-		}
-		if ((*currentPtr)._backPtr != NULL) {
-			cout << "Behind you: ";
-			Room* tempNextPtr = (*currentPtr)._backPtr;
-			(*tempNextPtr).printShort();
-
-			//give them the option to see the full descript
-			cout << "\nWant to read the full description (y or n): ";
-			char ans;
-			cin >> ans;
-			if (toupper(ans) == 'Y') {
-				cout << "You look a litle closer at the room on your right" << endl;
-				(*tempNextPtr).printLong();
-			}
-		}
-		
+		// get the direction
+		cout << "\n\nwhich direction will you go?" << endl; 
 		cout << "\nEnter R, L or B to move right left or back repectively: ";
-		
 		cin >> direction;
 		direction = toupper(direction);
 
+		// go the direction
 		switch (direction) {
 		case 'R':
 			if ((*currentPtr)._nextRPtr == NULL) {
@@ -151,6 +116,8 @@ int main() {
 			cout << "You enter the next room..." << endl;
 			currentPtr = (*currentPtr)._backPtr;
 			break;
+
+		case 'S':
 
 		default:
 			cout << "Thats not a recognised command/direction" << endl;
@@ -199,4 +166,5 @@ int main() {
 	*/
 	return 0;
 }
+
 
